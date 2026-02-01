@@ -1,4 +1,4 @@
-<img src="./image/banner.png" width="800">
+<img src="./images/banner.png" width="800">
 
 # Monty Hall Simulation
 
