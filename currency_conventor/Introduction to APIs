@@ -1,0 +1,105 @@
+<img src="./images/api.png" width="800">
+# Introduction to APIs
+Welcome to our introduction to APIs, or Application Programming Interfaces. These are the communication channels that allow different software systems to talk to each other. When we use an API, we're essentially asking a system to perform a task or send us data.
+Think of an API as a helpful concierge at a hotel. You have a request—you want your room cleaned, you need fresh towels, or you're hungry for a meal. You call the concierge (the API), who understands your needs and relays your request to the appropriate hotel staff (the server). The staff fulfills your request and returns the desired service or item back to you through the concierge. In this scenario, the concierge is the mediator who makes the communication between you and the hotel staff smooth and effective.
+
+In the digital world, we make these requests through the internet, using specific formats and protocols. The 'meal' you receive back can be in various forms, typically data formatted as JSON or XML. This data is what you asked for, whether it's the latest weather forecast, a list of books, or a stream of social media posts.
+
+<img src="./images/api-flow-white.png" width="800">
+In this lecture series, we'll be focusing specifically on RESTful APIs. REST stands for Representational State Transfer, and it's the most commonly used style of web API today. It's simple, it's flexible, and it uses the same HTTP protocols that power most of the internet. With REST, you can do just about anything you can do on the web: retrieve a webpage (or data), submit a form (or data), and more.
+
+We mentioned that there are different ways APIs can operate, much like how there are various ways you can order food at a restaurant. While there are several protocols, we briefly touch upon two others you might encounter:
+
+- **SOAP** (Simple Object Access Protocol): This is a protocol that's been around for a while, known for its formality and strict specifications. It's like a set menu where the rules of the order are already defined.
+- **GraphQL**: A newer style where you can request exactly what you need and nothing more, like having a personalized menu every time you order.
+
+Since RESTful APIs are the most common and are particularly beginner-friendly, we'll concentrate our efforts on understanding REST. It's the equivalent of 'à la carte' dining—you choose what you want from a menu that can handle a variety of requests, and you get exactly what you asked for.
+
+In the following sections, we'll learn how to interact with RESTful APIs using Python, and we'll see just how powerful and convenient this can be to fetch and send data across the web. Let's get started!
+**Table of contents**<a id='toc0_'></a>    
+- [Understanding URLs](#toc1_)    
+- [API Keys](#toc2_)    
+- [Endpoints and Resources](#toc3_)    
+- [Request and Response](#toc4_)    
+- [Status Codes](#toc5_)    
+- [HTTP Headers](#toc6_)    
+- [Response Content](#toc7_)    
+- [HTTP Methods and Query Parameters](#toc8_)    
+
+<!-- vscode-jupyter-toc-config
+	numbering=false
+	anchor=true
+	flat=false
+	minLevel=2
+	maxLevel=6
+	/vscode-jupyter-toc-config -->
+<!-- THIS CELL WILL BE REPLACED ON TOC UPDATE. DO NOT WRITE YOUR TEXT IN THIS CELL -->
+## <a id='toc1_'></a>[Understanding URLs](#toc0_)
+
+When you visit a website, you type in a web address or URL (Uniform Resource Locator). This URL is the most basic form of an API endpoint—it's the specific address where you can access the API's resources. Just like a physical address helps you locate a house, a URL helps your program locate the data it needs.
+
+For example, if you want to get the current weather, you might use a URL like `http://api.weather.com/current`. This URL directs your request to the 'current weather' resource on the `weather.com` API.
+
+## <a id='toc2_'></a>[API Keys](#toc0_)
+
+<img src="./images/api-key.png" width="800">
+Most APIs require some form of identification to use their services, which is where API keys come in. An API key is like a special passcode that identifies you to the API and grants you access to its data. It's important to keep your API key secure, just as you would with any other password.
+
+When you sign up to use an API, you'll typically be given an API key. You'll need to include this key in your requests to tell the API who you are. Often, it's included in the request header or as a query parameter in the URL.
+
+## <a id='toc3_'></a>[Endpoints and Resources](#toc0_)
+
+<img src="./images/endpoint.jpeg" width="800">
+Now, let's get more specific. An API is made up of endpoints, and each endpoint corresponds to a resource. A resource could be a user profile, a list of posts, a set of images—anything that the API can provide.
+
+Think of the endpoint as a specific room in our hotel analogy from earlier. If the hotel is the API, then asking the concierge (making an API call) to get something from a room is like accessing an endpoint to retrieve a resource.
+
+## <a id='toc4_'></a>[Request and Response](#toc0_)
+
+When you make a request to an API, you're asking for something. The API's response is what you get back. Let's see a simple example in Python using the `requests` library:
+
+
+In this example, we make a GET request to `https://api.example.com/data`, and we print out the JSON data we receive in response.
+
+## <a id='toc5_'></a>[Status Codes](#toc0_)
+
+<img src="./images/status-code-3.png" width="800">
+After making a request, the API will send back a status code as part of the response. This code tells you whether your request was successful or not, and if not, why.
+
+- `200 OK`: Your request was successful, and the server is sending back the data you asked for.
+- `404 Not Found`: The resource you asked for doesn't exist.
+- `500 Internal Server Error`: The server encountered an error and couldn't fulfill your request.
+
+These are just a few of the status codes you might see. They're part of the HTTP protocol and are standardized, so they'll mean the same thing on any API you use.
+
+## <a id='toc6_'></a>[HTTP Headers](#toc0_)
+
+HTTP headers are like the metadata of your request and response. They can contain additional information like the format of the data you're sending, instructions on how to cache the data, and, as mentioned earlier, your API key.
+
+For example, the `Content-Type` header tells the server what type of data you're sending, which is often `application/json` for API requests. The `Authorization` header is where you might include your API key if that's how the API requires it.
+
+## <a id='toc7_'></a>[Response Content](#toc0_)
+
+The response content is the data that comes back from the API. It's typically in JSON format, which is like the language that APIs use to communicate because it's readable by both humans and machines. Here's how you might parse JSON in Python:
+
+```python
+# Assuming 'response' is the HTTP response object from our previous request
+data = response.json()
+print(data)  # This prints the JSON data as a Python dictionary.
+```
+
+## <a id='toc8_'></a>[HTTP Methods and Query Parameters](#toc0_)
+
+<img src="./images/http-methods.png" width="800">
+HTTP methods are the types of requests you can make. You're probably already familiar with:
+
+- `GET`: Retrieve data from an API.
+- `POST`: Send new data to an API.
+- `PUT`/`PATCH`: Update existing data.
+- `DELETE`: Remove data.
+
+Query parameters are the bits of information you can add to a URL to filter or customize the data you're asking for. They often look like this: `?key=value`.
+
+For example, `https://api.example.com/data?search=python` has a query parameter of `search` with a value of `python`, which tells the API to search for data related to Python.
+
+With these basics in mind, you're now ready to start making your own API requests and handling the responses. Remember, practice makes perfect, so don't hesitate to start playing with real API calls!

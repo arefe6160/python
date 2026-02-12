@@ -59,7 +59,7 @@ if __name__ == "__main__":
     parser.add_argument("-q", "--quality", help="Video quality", default="highest")
     parser.add_argument("-o", "--output_path", help="Output path", default=None)
 
-    args = parser.parse_args()
+    args = parser.parse_args() 
 
     YouTubeDownloader(
         url=args.url,
