@@ -1,6 +1,9 @@
 import requests
+from cachetools import cached, TTLCache
 
+cache = TTLCache(maxsize=100, ttl=3600)
 
+@cached(cache)
 def get_exchange_rate(base_currency, target_currency):
     url = f"https://api.exchangerate-api.com/v4/latest/{base_currency}"
     response = requests.get(url)
